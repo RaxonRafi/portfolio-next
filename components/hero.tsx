@@ -58,15 +58,28 @@ export default function Hero() {
               into elegant solutions is what I do best.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="group" onClick={() => scrollToSection("projects")}>
-                View My Work
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button size="lg" variant="outline" onClick={() => scrollToSection("contact")}>
-                Contact Me
-              </Button>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-4">
+          <a
+            href="https://drive.google.com/file/d/17XCuJzGaMFim86DKfGu91pEGTBZcWsuo/view?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button size="lg" className="group">
+              Preview Resume
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </a>
+
+          <a
+            href="/public/resume/Muhammad_Rafi.pdf.pdf"
+            download
+          >
+            <Button size="lg" variant="outline">
+              Download Resume
+            </Button>
+          </a>
+        </div>
+
 
             <div className="flex gap-4 mt-8">
               <Button variant="ghost" size="icon" className="rounded-full" asChild>
