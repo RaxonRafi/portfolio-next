@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Github, Linkedin, Twitter } from "lucide-react"
 import { motion } from "framer-motion"
 import Image from "next/image"
-import profilePic from '@/public/images/profile.jpg'
+import profilePic from '@/public/images/muhammadrafi.png'
 
 export default function Hero() {
   const [text, setText] = useState("")
@@ -70,17 +70,17 @@ export default function Hero() {
 
             <div className="flex gap-4 mt-8">
               <Button variant="ghost" size="icon" className="rounded-full" asChild>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/raxonRafi" target="_blank" rel="noopener noreferrer">
                   <Github className="h-5 w-5" />
                 </a>
               </Button>
               <Button variant="ghost" size="icon" className="rounded-full" asChild>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                <a href="linkedin.com/in/md-mashruul-islam/" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="h-5 w-5" />
                 </a>
               </Button>
               <Button variant="ghost" size="icon" className="rounded-full" asChild>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://x.com/RaxonRafi" target="_blank" rel="noopener noreferrer">
                   <Twitter className="h-5 w-5" />
                 </a>
               </Button>

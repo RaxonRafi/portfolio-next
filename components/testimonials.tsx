@@ -1,80 +1,95 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent } from "@/components/ui/card"
-import { Star, StarHalf } from "lucide-react"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import client1 from "@/public/clients/client1.jpeg";
+import client2 from "@/public/clients/client2.jpeg";
+import client3 from "@/public/clients/client3.webp";
+import client4 from "@/public/clients/client4.webp";
+import { motion } from "framer-motion";
+import { Star, StarHalf } from "lucide-react";
+import Image from "next/image";
 
 export default function Testimonials() {
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
-  }
+  };
 
   const testimonials = [
     {
       id: 1,
-      name: "Sarah Johnson",
-      position: "Product Manager at TechCorp",
+      name: "nrweastman",
+      position: "Founder of A Higher Note",
       content:
-        "Working with MemoryLeaked was an absolute pleasure. They delivered our project on time and exceeded our expectations in terms of quality and functionality. Their attention to detail and problem-solving skills are exceptional.",
+        "Rafi is always helpful and communicative. This time, he collaborated with me to solve a mystery of my completely-deleted business website. I did not have the comfort level to proceed with solving the problem on my own. I provided him with what appeared to be older backups in my cpanel and he sorted through everything and restored my site fully.",
       rating: 5,
-      image: "/placeholder.svg?height=100&width=100",
+      image: client1,
     },
     {
       id: 2,
-      name: "Michael Chen",
-      position: "CTO at StartupX",
+      name: "Emmanuel Sandoval",
+      position: "Founder of Global technologies Pakal",
       content:
-        "MemoryLeaked helped us rebuild our entire platform from the ground up. Their technical expertise and ability to understand our business needs resulted in a product that has significantly improved our user engagement and conversion rates.",
+        "It is a genuine pleasure to recommend Rafi as an exceptional web developer. During the time we worked together, I was amazed by his talent and dedication to the world of web development. Rafi is a valuable addition to any web development team. His work ethic, professionalism, and focus on quality set him apart as a leader in his field.I highly recommend Rafi for any web development project. I'm confident he will continue to have a positive impact on any company or project he participates in.Working with Rafi is an enriching experience, and I would not hesitate to collaborate with him on future projects.",
       rating: 5,
-      image: "/placeholder.svg?height=100&width=100",
+      image: client2,
     },
     {
       id: 3,
-      name: "Emily Rodriguez",
-      position: "Founder of DesignHub",
+      name: "Tammy Lyn",
+      position: "Founder of SpinListingSeo",
       content:
-        "I was impressed by MemoryLeaked's ability to translate our design vision into a fully functional website. They were responsive, professional, and provided valuable suggestions that improved the overall user experience.",
-      rating: 4.5,
-      image: "/placeholder.svg?height=100&width=100",
+        "Thanks great job as always!",
+      rating: 5,
+      image: client3,
     },
     {
       id: 4,
-      name: "David Kim",
-      position: "Marketing Director at GrowthCo",
+      name: "randy schwartz",
+      position: "Founder of mosi premium cleaning",
       content:
-        "MemoryLeaked developed a custom analytics dashboard for our marketing team that has transformed how we track and optimize our campaigns. Their solution was elegant, intuitive, and exactly what we needed.",
+        "Awesome , great at his work , knowledge, Highly recommend!",
       rating: 5,
-      image: "/placeholder.svg?height=100&width=100",
+      image: client4,
     },
     {
       id: 5,
-      name: "Lisa Patel",
-      position: "E-commerce Manager at RetailPlus",
+      name: "cyphernet",
+      position: "CEO of Cyphernet",
       content:
-        "The e-commerce platform developed by MemoryLeaked has been a game-changer for our business. It's fast, secure, and our customers love the seamless shopping experience. We've seen a 40% increase in online sales since launch.",
-      rating: 4.5,
+        "Quick, and respectful throughout the entire process. Will be working with them again!",
+      rating: 5,
       image: "/placeholder.svg?height=100&width=100",
     },
-  ]
+  ];
 
-  const renderStars = (rating) => {
-    const stars = []
-    const fullStars = Math.floor(rating)
-    const hasHalfStar = rating % 1 !== 0
+  const renderStars = (rating: number) => {
+    const stars = [];
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 !== 0;
 
     for (let i = 0; i < fullStars; i++) {
-      stars.push(<Star key={i} className="h-5 w-5 fill-primary text-primary" />)
+      stars.push(
+        <Star key={i} className="h-5 w-5 fill-primary text-primary" />
+      );
     }
 
     if (hasHalfStar) {
-      stars.push(<StarHalf key="half" className="h-5 w-5 fill-primary text-primary" />)
+      stars.push(
+        <StarHalf key="half" className="h-5 w-5 fill-primary text-primary" />
+      );
     }
 
-    return <div className="flex">{stars}</div>
-  }
+    return <div className="flex">{stars}</div>;
+  };
 
   return (
     <section id="testimonials" className="py-20">
@@ -90,7 +105,9 @@ export default function Testimonials() {
           <Badge variant="outline" className="mb-4">
             Testimonials
           </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Client Satisfaction</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Client Satisfaction
+          </h2>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
         </motion.div>
 
@@ -104,24 +121,43 @@ export default function Testimonials() {
           <Carousel className="w-full">
             <CarouselContent>
               {testimonials.map((testimonial) => (
-                <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3 p-2">
+                <CarouselItem
+                  key={testimonial.id}
+                  className="md:basis-1/2 lg:basis-1/3 p-2"
+                >
                   <Card className="h-full">
                     <CardContent className="p-6 flex flex-col h-full">
                       <div className="flex items-center gap-4 mb-4">
                         <div className="w-12 h-12 rounded-full overflow-hidden">
-                          <img
-                            src={testimonial.image || "/placeholder.svg"}
-                            alt={testimonial.name}
-                            className="w-full h-full object-cover"
-                          />
+                          {typeof testimonial.image === "string" ? (
+                            <img
+                              src={testimonial.image}
+                              alt={testimonial.name}
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <Image
+                              src={testimonial.image}
+                              alt={testimonial.name}
+                              className="w-full h-full object-cover"
+                              width={48}
+                              height={48}
+                            />
+                          )}
                         </div>
                         <div>
                           <h4 className="font-semibold">{testimonial.name}</h4>
-                          <p className="text-sm text-muted-foreground">{testimonial.position}</p>
+                          <p className="text-sm text-muted-foreground">
+                            {testimonial.position}
+                          </p>
                         </div>
                       </div>
-                      <p className="text-muted-foreground flex-grow mb-4">"{testimonial.content}"</p>
-                      <div className="mt-auto">{renderStars(testimonial.rating)}</div>
+                      <p className="text-muted-foreground flex-grow mb-4">
+                        "{testimonial.content}"
+                      </p>
+                      <div className="mt-auto">
+                        {renderStars(testimonial.rating)}
+                      </div>
                     </CardContent>
                   </Card>
                 </CarouselItem>
@@ -135,5 +171,5 @@ export default function Testimonials() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

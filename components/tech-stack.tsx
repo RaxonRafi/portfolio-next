@@ -15,10 +15,8 @@ export default function TechStack() {
       title: "Programming Languages",
       description: "Core languages for systems and application development",
       skills: [
-        { name: "C++", level: 90 },
-        { name: "C", level: 85 },
-        { name: "Java", level: 88 },
-        { name: "Ruby", level: 82 },
+        { name: "C/C++", level: 90 },
+        { name: "PHP", level: 85 },
         { name: "Python", level: 85 },
         { name: "TypeScript", level: 90 },
         { name: "JavaScript", level: 90 },
@@ -47,7 +45,9 @@ export default function TechStack() {
         { name: "HTML/CSS", level: 95 },
         { name: "Tailwind CSS", level: 95 },
         { name: "Redux", level: 85 },
-        { name: "WebGL", level: 75 },
+        { name: "Bootstrap", level: 75 },
+        { name: "Shadcn UI", level: 85 },
+        { name: "Ant Design", level: 75 },
       ],
     },
     backend: {
@@ -55,10 +55,9 @@ export default function TechStack() {
       title: "Backend Development",
       description: "Server-side frameworks and technologies",
       skills: [
-        { name: "Node.js", level: 85 },
-        { name: "Express", level: 80 },
-        { name: "Spring Boot", level: 85 },
-        { name: "Ruby on Rails", level: 80 },
+        { name: "Node.js", level: 95 },
+        { name: "Express", level: 90 },
+        { name: "Laravel", level: 85 },
       ],
     },
     database: {
@@ -69,7 +68,6 @@ export default function TechStack() {
         { name: "MongoDB", level: 85 },
         { name: "PostgreSQL", level: 80 },
         { name: "MySQL", level: 75 },
-        { name: "Redis", level: 70 },
       ],
     },
     tools: {
@@ -79,9 +77,7 @@ export default function TechStack() {
       skills: [
         { name: "Git", level: 90 },
         { name: "Docker", level: 80 },
-        { name: "AWS", level: 75 },
-        { name: "Linux/Unix", level: 85 },
-        { name: "CMake", level: 80 },
+        { name: "Linux", level: 85 },
         { name: "Visual Studio", level: 85 },
       ],
     },

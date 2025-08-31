@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { toast } from "@/components/ui/use-toast"
-import { Mail, MapPin, Phone, Github, Linkedin, Twitter } from "lucide-react"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { toast } from "@/components/ui/use-toast";
+import { motion } from "framer-motion";
+import { Github, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
+import { useState } from "react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -17,60 +17,60 @@ export default function Contact() {
     email: "",
     subject: "",
     message: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
-  }
+  };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
     // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
     toast({
       title: "Message sent!",
       description: "Thank you for your message. I'll get back to you soon.",
-    })
+    });
 
     setFormData({
       name: "",
       email: "",
       subject: "",
       message: "",
-    })
-    setIsSubmitting(false)
-  }
+    });
+    setIsSubmitting(false);
+  };
 
   const contactInfo = [
     {
       icon: <Mail className="h-6 w-6 text-primary" />,
       title: "Email",
-      value: "contact@memoryleaked.dev",
-      link: "mailto:contact@memoryleaked.dev",
+      value: "dev.muhammad.rafi@gmail.com",
+      link: "mailto:dev.muhammad.rafi@gmail.com",
     },
     {
       icon: <Phone className="h-6 w-6 text-primary" />,
       title: "Phone",
-      value: "+44 (123) 456-7890",
-      link: "tel:+441234567890",
+      value: "+8801867118351",
+      link: "tel:8801867118351",
     },
     {
       icon: <MapPin className="h-6 w-6 text-primary" />,
       title: "Location",
-      value: "Manchester, England",
+      value: "Chittagong, Bangladesh",
       link: null,
     },
-  ]
+  ];
 
   return (
     <section id="contact" className="py-20 bg-muted/30">
@@ -150,7 +150,11 @@ export default function Contact() {
                       required
                     />
                   </div>
-                  <Button type="submit" className="w-full" disabled={isSubmitting}>
+                  <Button
+                    type="submit"
+                    className="w-full"
+                    disabled={isSubmitting}
+                  >
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
@@ -170,11 +174,18 @@ export default function Contact() {
                 <Card key={index}>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
-                      <div className="bg-primary/10 p-3 rounded-full">{info.icon}</div>
+                      <div className="bg-primary/10 p-3 rounded-full">
+                        {info.icon}
+                      </div>
                       <div>
-                        <h4 className="text-lg font-semibold mb-1">{info.title}</h4>
+                        <h4 className="text-lg font-semibold mb-1">
+                          {info.title}
+                        </h4>
                         {info.link ? (
-                          <a href={info.link} className="text-muted-foreground hover:text-primary transition-colors">
+                          <a
+                            href={info.link}
+                            className="text-muted-foreground hover:text-primary transition-colors"
+                          >
                             {info.value}
                           </a>
                         ) : (
@@ -190,18 +201,45 @@ export default function Contact() {
                 <CardContent className="p-6">
                   <h4 className="text-lg font-semibold mb-4">Follow Me</h4>
                   <div className="flex gap-4">
-                    <Button variant="outline" size="icon" className="rounded-full" asChild>
-                      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="rounded-full"
+                      asChild
+                    >
+                      <a
+                        href="linkedin.com/in/md-mashruul-islam/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <Linkedin className="h-5 w-5" />
                       </a>
                     </Button>
-                    <Button variant="outline" size="icon" className="rounded-full" asChild>
-                      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="rounded-full"
+                      asChild
+                    >
+                      <a
+                        href="https://x.com/RaxonRafi"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <Twitter className="h-5 w-5" />
                       </a>
                     </Button>
-                    <Button variant="outline" size="icon" className="rounded-full" asChild>
-                      <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="rounded-full"
+                      asChild
+                    >
+                      <a
+                        href="https://github.com/raxonRafi"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <Github className="h-5 w-5" />
                       </a>
                     </Button>
@@ -213,5 +251,5 @@ export default function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }

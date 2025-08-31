@@ -39,9 +39,7 @@ export default function About() {
           >
             <h3 className="text-2xl font-bold mb-4">A Passionate Developer</h3>
             <p className="text-muted-foreground mb-6">
-              I'm a software developer with a passion for creating clean, efficient, and user-friendly applications.
-              With over 5 years of experience in the industry, I've worked on a variety of projects ranging from small
-              business websites to complex enterprise applications.
+              I'm a software developer with a passion for creating clean, efficient, and user-friendly applications. I've worked on a variety of projects ranging from small business websites to complex enterprise applications.
             </p>
             <p className="text-muted-foreground mb-6">
               My journey in software development began when I was in college, where I discovered my love for solving

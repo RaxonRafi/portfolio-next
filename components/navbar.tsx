@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 import logo from '@/public/images/logo.png'
+import { ModeToggle } from "./modeToggle"
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -34,9 +35,9 @@ export default function Navbar() {
   const navLinks = [
     { name: "Home", href: "home" },
     { name: "About", href: "about" },
-    { name: "Tech Stack", href: "tech-stack" },
     { name: "Projects", href: "projects" },
     { name: "Testimonials", href: "testimonials" },
+    { name: "Blogs", href: "blogs" },
     { name: "Contact", href: "contact" },
   ]
 
@@ -53,7 +54,7 @@ export default function Navbar() {
     
             <Image 
               src={logo}
-              alt="MemoryLeaked Logo"
+              alt="Muhammad Rafi Logo"
               className="h-auto w-[250px] rounded-full"
               width={250}
               height={50} 
@@ -72,7 +73,8 @@ export default function Navbar() {
                 {link.name}
               </button>
             ))}
-            <Button>Resume</Button>
+            {/* <Button>Resume</Button> */}
+            <ModeToggle/>
           </nav>
 
           {/* Mobile Navigation Toggle */}
@@ -96,7 +98,7 @@ export default function Navbar() {
                   {link.name}
                 </button>
               ))}
-              <Button className="w-full">Resume</Button>
+              {/* <Button className="w-full">Resume</Button> */}
             </nav>
           </div>
         </div>
