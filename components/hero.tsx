@@ -9,7 +9,7 @@ import profilePic from '@/public/images/muhammadrafi.png'
 
 export default function Hero() {
   const [text, setText] = useState("")
-  const fullText = "Software Developer"
+  const fullText = "Software Engineer"
 
   useEffect(() => {
     let i = 0
@@ -71,7 +71,7 @@ export default function Hero() {
           </a>
 
           <a
-            href="/public/resume/Muhammad_Rafi.pdf.pdf"
+            href="/resume/Muhammad_Rafi.pdf.pdf"
             download
           >
             <Button size="lg" variant="outline">

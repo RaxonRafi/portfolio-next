@@ -51,15 +51,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between w-full">
           <button onClick={() => scrollToSection("home")} >
-    
-            <Image 
-              src={logo}
-              alt="Muhammad Rafi Logo"
-              className="h-auto w-[250px] rounded-full"
-              width={250}
-              height={50} 
-
-            />
+            <h1 className="text-2xl font-bold text-primary tracking-wide">Muhammad Rafi</h1>
           </button>
 
           {/* Desktop Navigation */}
