@@ -4,9 +4,9 @@ import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import Image from "next/image"
-import logo from '@/public/images/logo.png'
+import Link from "next/link"
 import { ModeToggle } from "./modeToggle"
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -20,25 +20,13 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const scrollToSection = (sectionId: string) => {
-    setIsOpen(false)
-    const element = document.getElementById(sectionId)
-    if (element) {
-      const offsetTop = element.getBoundingClientRect().top + window.pageYOffset
-      window.scrollTo({
-        top: offsetTop,
-        behavior: "smooth",
-      })
-    }
-  }
-
   const navLinks = [
-    { name: "Home", href: "home" },
-    { name: "About", href: "about" },
-    { name: "Projects", href: "projects" },
-    { name: "Testimonials", href: "testimonials" },
-    { name: "Blogs", href: "blogs" },
-    { name: "Contact", href: "contact" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/#about" },
+    { name: "Projects", href: "/#projects" },
+    { name: "Testimonials", href: "/#testimonials" },
+    { name: "Blogs", href: "/#blogs" },
+    { name: "Contact", href: "/#contact" },
   ]
 
   return (
@@ -50,23 +38,23 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between w-full">
-          <button onClick={() => scrollToSection("home")} >
-            <h1 className="text-2xl font-bold text-primary tracking-wide">Muhammad Rafi</h1>
-          </button>
+          {/* Logo as Homepage Link */}
+          <Link href="/" className="text-2xl font-bold text-primary dark:text-white tracking-wide">
+            Muhammad Rafi
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <button
+              <Link
                 key={link.name}
-                onClick={() => scrollToSection(link.href)}
+                href={link.href}
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.name}
-              </button>
+              </Link>
             ))}
-            {/* <Button>Resume</Button> */}
-            <ModeToggle/>
+            <ModeToggle />
           </nav>
 
           {/* Mobile Navigation Toggle */}
@@ -82,15 +70,15 @@ export default function Navbar() {
           <div className="container mx-auto px-4 py-4">
             <nav className="flex flex-col space-y-4">
               {navLinks.map((link) => (
-                <button
+                <Link
                   key={link.name}
-                  onClick={() => scrollToSection(link.href)}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
                   className="text-muted-foreground hover:text-foreground transition-colors py-2 text-left"
                 >
                   {link.name}
-                </button>
+                </Link>
               ))}
-              {/* <Button className="w-full">Resume</Button> */}
             </nav>
           </div>
         </div>
