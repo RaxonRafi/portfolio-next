@@ -1,207 +1,192 @@
 "use client"
 
+import { AnimatePresence, motion } from "framer-motion"
+import { Binary, ChevronDown, Code2, Database, Layout, Server, Wrench } from "lucide-react"
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent } from "@/components/ui/card"
-import { Code2, Layout, Server, Database, Wrench, Binary } from "lucide-react"
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 🛠️ TECH STACK - NEO-TERMINAL STYLE
+// Consistent design with the About section
+// ═══════════════════════════════════════════════════════════════════════════
 
 export default function TechStack() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
 
   const technologies = {
     languages: {
-      icon: <Code2 className="h-6 w-6" />,
-      title: "Programming Languages",
-      description: "Core languages for systems and application development",
-      skills: [
-        { name: "C/C++", level: 90 },
-        { name: "PHP", level: 85 },
-        { name: "Python", level: 85 },
-        { name: "TypeScript", level: 90 },
-        { name: "JavaScript", level: 90 },
-      ],
+      icon: <Code2 className="h-5 w-5" />,
+      title: "Languages",
+      skills: ["C/C++", "PHP", "Python", "TypeScript", "JavaScript"],
     },
     concepts: {
-      icon: <Binary className="h-6 w-6" />,
-      title: "Engineering Concepts",
-      description: "Fundamental software engineering principles",
-      skills: [
-        { name: "Data Structures", level: 95 },
-        { name: "Algorithms", level: 90 },
-        { name: "OOP", level: 95 },
-        { name: "Design Patterns", level: 85 },
-        { name: "System Design", level: 80 },
-        { name: "Multithreading", level: 85 },
-      ],
+      icon: <Binary className="h-5 w-5" />,
+      title: "Engineering",
+      skills: ["Data Structures", "Algorithms", "OOP", "Design Patterns", "System Design"],
     },
     frontend: {
-      icon: <Layout className="h-6 w-6" />,
-      title: "Frontend Development",
-      description: "Modern web development technologies",
-      skills: [
-        { name: "React", level: 90 },
-        { name: "Next.js", level: 85 },
-        { name: "HTML/CSS", level: 95 },
-        { name: "Tailwind CSS", level: 95 },
-        { name: "Redux", level: 85 },
-        { name: "Bootstrap", level: 75 },
-        { name: "Shadcn UI", level: 85 },
-        { name: "Ant Design", level: 75 },
-      ],
+      icon: <Layout className="h-5 w-5" />,
+      title: "Frontend",
+      skills: ["React", "Next.js", "Tailwind CSS", "Redux", "Shadcn UI"],
     },
     backend: {
-      icon: <Server className="h-6 w-6" />,
-      title: "Backend Development",
-      description: "Server-side frameworks and technologies",
-      skills: [
-        { name: "Node.js", level: 95 },
-        { name: "Express", level: 90 },
-        { name: "Laravel", level: 85 },
-      ],
+      icon: <Server className="h-5 w-5" />,
+      title: "Backend",
+      skills: ["Node.js", "Express", "Laravel"],
     },
     database: {
-      icon: <Database className="h-6 w-6" />,
-      title: "Database Systems",
-      description: "Database management and optimization",
-      skills: [
-        { name: "MongoDB", level: 85 },
-        { name: "PostgreSQL", level: 80 },
-        { name: "MySQL", level: 75 },
-      ],
+      icon: <Database className="h-5 w-5" />,
+      title: "Database",
+      skills: ["MongoDB", "PostgreSQL", "MySQL"],
     },
     tools: {
-      icon: <Wrench className="h-6 w-6" />,
-      title: "Development Tools",
-      description: "Tools and environments for development",
-      skills: [
-        { name: "Git", level: 90 },
-        { name: "Docker", level: 80 },
-        { name: "Linux", level: 85 },
-        { name: "Visual Studio", level: 85 },
-      ],
+      icon: <Wrench className="h-5 w-5" />,
+      title: "Tools",
+      skills: ["Git", "Docker", "Linux", "VS Code"],
     },
   }
 
   const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 },
   }
 
-  const scaleUp = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: { opacity: 1, scale: 1 },
-  }
-
   return (
-    <section id="tech-stack" className="py-20">
-      <div className="container mx-auto px-4">
+    <section 
+      id="tech-stack" 
+      className="py-32 relative"
+      style={{ backgroundColor: '#121212' }}
+    >
+      {/* Subtle top border */}
+      <div 
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{
+          background: 'linear-gradient(to right, transparent, rgba(138, 43, 226, 0.2), transparent)'
+        }}
+      />
+      
+      <div className="container mx-auto px-6">
+        {/* Section Header - Consistent with About */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           variants={fadeIn}
-          className="text-center mb-16"
+          className="max-w-3xl mb-20"
         >
-          <Badge variant="outline" className="mb-4">
-            Skills
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Technical Expertise</h2>
-          <div className="w-20 h-1 bg-primary mx-auto"></div>
+          <span 
+            className="font-mono text-[0.65rem] uppercase tracking-[0.15em] mb-4 block"
+            style={{ color: '#8A2BE2' }}
+          >
+            02 — Skills
+          </span>
+          <h2 
+            className="text-4xl md:text-5xl lg:text-6xl font-normal mb-6 font-mono text-white"
+          >
+            Technical{' '}
+            <span 
+              className="text-transparent bg-clip-text"
+              style={{
+                backgroundImage: 'linear-gradient(135deg, #8A2BE2 0%, #b24bff 100%)',
+                textShadow: '0 0 30px rgba(138, 43, 226, 0.5)'
+              }}
+            >
+              Expertise
+            </span>
+          </h2>
+          <p className="text-lg text-white/50 leading-relaxed">
+            With extensive experience in both low-level systems programming and modern web development, 
+            I bring a comprehensive understanding of software engineering.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {Object.entries(technologies).map(([key, category]) => (
+        {/* Skills Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {Object.entries(technologies).map(([key, category], index) => (
             <motion.div
               key={key}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              variants={scaleUp}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              variants={fadeIn}
             >
-              <Card
-                className={`h-full cursor-pointer transition-all duration-300 hover:shadow-lg ${
-                  selectedCategory === key ? "ring-2 ring-primary" : ""
-                }`}
+              <button
                 onClick={() => setSelectedCategory(selectedCategory === key ? null : key)}
+                className="neo-card w-full p-6 text-left transition-all"
+                style={{
+                  borderColor: selectedCategory === key ? 'rgba(138, 43, 226, 0.4)' : undefined,
+                  boxShadow: selectedCategory === key ? '0 0 20px rgba(138, 43, 226, 0.2)' : undefined
+                }}
               >
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="bg-primary/10 p-3 rounded-full">{category.icon}</div>
-                    <div>
-                      <h3 className="text-lg font-semibold">{category.title}</h3>
-                      <p className="text-sm text-muted-foreground">{category.description}</p>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div 
+                      className="w-10 h-10 rounded-xl flex items-center justify-center"
+                      style={{ 
+                        backgroundColor: 'rgba(138, 43, 226, 0.1)',
+                        color: '#8A2BE2'
+                      }}
+                    >
+                      {category.icon}
                     </div>
+                    <h3 className="text-lg font-medium text-white font-mono">
+                      {category.title}
+                    </h3>
                   </div>
+                  <ChevronDown 
+                    className={`h-5 w-5 text-white/40 transition-transform ${
+                      selectedCategory === key ? 'rotate-180' : ''
+                    }`} 
+                  />
+                </div>
 
-                  <AnimatePresence>
-                    {selectedCategory === key && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="space-y-4"
-                      >
-                        {category.skills.map((skill, index) => (
-                          <motion.div
-                            key={index}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.1 }}
-                            className="space-y-2"
+                <AnimatePresence>
+                  {selectedCategory === key ? (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="flex flex-wrap gap-2 pt-2">
+                        {category.skills.map((skill, i) => (
+                          <span 
+                            key={i}
+                            className="skill-tag px-3 py-1.5 text-sm font-mono"
+                            style={{ color: '#8A2BE2' }}
                           >
-                            <div className="flex justify-between text-sm">
-                              <span className="font-medium">{skill.name}</span>
-                              <span className="text-muted-foreground">{skill.level}%</span>
-                            </div>
-                            <div className="w-full bg-muted rounded-full h-1.5">
-                              <motion.div
-                                initial={{ width: 0 }}
-                                animate={{ width: `${skill.level}%` }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className="bg-primary h-1.5 rounded-full"
-                              />
-                            </div>
-                          </motion.div>
+                            {skill}
+                          </span>
                         ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
-                  {selectedCategory !== key && (
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {category.skills.slice(0, 3).map((skill, index) => (
-                        <Badge key={index} variant="secondary">
-                          {skill.name}
-                        </Badge>
+                      </div>
+                    </motion.div>
+                  ) : (
+                    <div className="flex gap-2 flex-wrap">
+                      {category.skills.slice(0, 3).map((skill, i) => (
+                        <span 
+                          key={i}
+                          className="text-sm text-white/40 font-mono"
+                        >
+                          {skill}{i < 2 && category.skills.length > 1 ? ', ' : ''}
+                        </span>
                       ))}
                       {category.skills.length > 3 && (
-                        <Badge variant="secondary">+{category.skills.length - 3} more</Badge>
+                        <span 
+                          className="text-sm font-mono"
+                          style={{ color: '#8A2BE2' }}
+                        >
+                          +{category.skills.length - 3} more
+                        </span>
                       )}
                     </div>
                   )}
-                </CardContent>
-              </Card>
+                </AnimatePresence>
+              </button>
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          variants={fadeIn}
-          className="mt-12 text-center text-muted-foreground"
-        >
-          <p className="max-w-2xl mx-auto">
-            With extensive experience in both low-level systems programming and modern web development, I bring a
-            comprehensive understanding of software engineering principles to every project.
-          </p>
-        </motion.div>
       </div>
     </section>
   )

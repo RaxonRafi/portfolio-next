@@ -185,12 +185,12 @@ export function CreateProjectForm({
 
   return (
     <div className={cn("w-full max-w-4xl mx-auto", className)} {...props}>
-      <Card>
+      <Card className="neo-card border-[rgba(138,43,226,0.2)]">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold">
+          <CardTitle className="text-2xl font-bold text-white">
             Create New Project
           </CardTitle>
-          <p className="text-muted-foreground">
+          <p className="text-white/60">
             Add a new project to your portfolio
           </p>
         </CardHeader>
@@ -346,8 +346,8 @@ export function CreateProjectForm({
 
               {/* Thumbnail Upload */}
               <div className="space-y-3">
-                <FormLabel>Project Thumbnail</FormLabel>
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                <FormLabel className="text-white/90">Project Thumbnail</FormLabel>
+                <div className="border-2 border-dashed border-[rgba(138,43,226,0.3)] rounded-lg p-6 text-center bg-white/5">
                   <input
                     type="file"
                     accept="image/*"
@@ -363,14 +363,14 @@ export function CreateProjectForm({
                           alt="Thumbnail preview"
                           className="mx-auto max-h-40 rounded-lg"
                         />
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm text-white/60">
                           Click to change image
                         </p>
                       </div>
                     ) : (
                       <div className="space-y-2">
-                        <Upload className="mx-auto h-12 w-12 text-gray-400" />
-                        <p className="text-sm text-muted-foreground">
+                        <Upload className="mx-auto h-12 w-12 text-white/40" />
+                        <p className="text-sm text-white/60">
                           Click to upload thumbnail image
                         </p>
                       </div>
@@ -383,26 +383,26 @@ export function CreateProjectForm({
               {(watchedValues.project_title ||
                 watchedValues.tech_used.length > 0 ||
                 watchedValues.desc) && (
-                <div className="border-t pt-6">
-                  <h3 className="text-lg font-semibold mb-4">Preview</h3>
-                  <Card className="p-4 bg-gray-50">
+                <div className="border-t border-[rgba(138,43,226,0.2)] pt-6">
+                  <h3 className="text-lg font-semibold mb-4 text-white">Preview</h3>
+                  <Card className="p-4 bg-white/5 border-[rgba(138,43,226,0.2)]">
                     <div className="space-y-3">
                       {watchedValues.project_title && (
-                        <h4 className="text-xl font-bold">
+                        <h4 className="text-xl font-bold text-white/90">
                           {watchedValues.project_title}
                         </h4>
                       )}
                       {watchedValues.tech_used.length > 0 && (
                         <div className="flex flex-wrap gap-2">
                           {watchedValues.tech_used.map((tech) => (
-                            <Badge key={tech} variant="secondary">
+                            <Badge key={tech} variant="secondary" className="bg-[rgba(138,43,226,0.2)] text-[#b24bff] border-[rgba(138,43,226,0.3)]">
                               {tech}
                             </Badge>
                           ))}
                         </div>
                       )}
                       {watchedValues.desc && (
-                        <div className="text-gray-600 text-sm">
+                        <div className="text-white/70 text-sm">
                           <div
                             dangerouslySetInnerHTML={{
                               __html: watchedValues.desc,
@@ -417,10 +417,10 @@ export function CreateProjectForm({
               )}
 
               {/* Submit Button */}
-              <Button type="submit" className="w-full" disabled={isLoading}>
+              <Button type="submit" className="w-full btn-primary" disabled={isLoading}>
                 {isLoading ? (
                   <div className="flex items-center gap-2">
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-[#8A2BE2]"></div>
                     Creating Project...
                   </div>
                 ) : (

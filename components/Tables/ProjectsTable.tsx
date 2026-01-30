@@ -96,7 +96,7 @@ const ProjectsTable = ({
   if (loading) {
     return (
       <div
-        className={cn("w-full max-w-4xl mx-auto text-center py-10", className)}
+        className={cn("w-full max-w-4xl mx-auto text-center py-10 text-white/80", className)}
       >
         <p>Loading projects...</p>
       </div>
@@ -107,7 +107,7 @@ const ProjectsTable = ({
     return (
       <div
         className={cn(
-          "w-full max-w-4xl mx-auto text-center py-10 text-red-500",
+          "w-full max-w-4xl mx-auto text-center py-10 text-red-400",
           className
         )}
       >
@@ -123,9 +123,9 @@ const ProjectsTable = ({
   // --- Component Render ---
   return (
     <div className={cn("w-full max-w-4xl mx-auto", className)} {...props}>
-      <Card>
+      <Card className="neo-card border-[rgba(138,43,226,0.2)]">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold">Projects</CardTitle>
+          <CardTitle className="text-2xl font-bold text-white">Projects</CardTitle>
         </CardHeader>
         <CardContent>
           <Table>
@@ -146,7 +146,7 @@ const ProjectsTable = ({
             <TableBody>
               {projectsOnCurrentPage.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={6} className="h-24 text-center">
+                  <TableCell colSpan={6} className="h-24 text-center text-white/60">
                     No projects found on this page.
                   </TableCell>
                 </TableRow>
@@ -162,17 +162,17 @@ const ProjectsTable = ({
                         className="object-cover rounded-md"
                       />
                     </TableCell>
-                    <TableCell className="font-medium">
+                    <TableCell className="font-medium text-white/90">
                       {project.project_title}
                     </TableCell>
-                    <TableCell>{formatTechUsed(project.tech_used)}</TableCell>
+                    <TableCell className="text-white/80">{formatTechUsed(project.tech_used)}</TableCell>
                     <TableCell>
                       <Link
                         href={project.live_url}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <Button variant="link" className="p-0 h-auto">
+                        <Button variant="link" className="p-0 h-auto text-[#8A2BE2] hover:text-[#b24bff]">
                           Live
                         </Button>
                       </Link>
@@ -183,7 +183,7 @@ const ProjectsTable = ({
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <Button variant="link" className="p-0 h-auto">
+                        <Button variant="link" className="p-0 h-auto text-[#8A2BE2] hover:text-[#b24bff]">
                           GitHub
                         </Button>
                       </Link>
@@ -192,6 +192,7 @@ const ProjectsTable = ({
                       <Button
                         variant="outline"
                         size="sm"
+                        className="border-[rgba(138,43,226,0.3)] text-white/90 hover:bg-[rgba(138,43,226,0.15)]"
                         onClick={() => openEdit(project)}
                       >
                         Edit
@@ -218,17 +219,19 @@ const ProjectsTable = ({
           <Button
             variant="outline"
             size="sm"
+            className="border-[rgba(138,43,226,0.3)] text-white/90 hover:bg-[rgba(138,43,226,0.15)]"
             onClick={goToPrevPage}
             disabled={currentPage === 1}
           >
             <ChevronLeft className="mr-2 h-4 w-4" /> Previous
           </Button>
-          <div className="flex-1 text-sm text-muted-foreground text-center">
+          <div className="flex-1 text-sm text-white/60 text-center">
             Page {currentPage} of {totalPages}
           </div>
           <Button
             variant="outline"
             size="sm"
+            className="border-[rgba(138,43,226,0.3)] text-white/90 hover:bg-[rgba(138,43,226,0.15)]"
             onClick={goToNextPage}
             disabled={currentPage === totalPages}
           >

@@ -1,15 +1,16 @@
 import Sidebar from "@/components/shared/Sidebar";
 
-
 export default function DashboardLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <main className="min-h-dvh flex gap-4">
+    <main className="min-h-dvh flex" style={{ backgroundColor: '#121212' }}>
       <Sidebar />
-      {children}
+      <div className="flex-1 overflow-auto">
+        {children}
+      </div>
     </main>
   );
 }

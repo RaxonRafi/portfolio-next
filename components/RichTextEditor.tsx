@@ -26,7 +26,6 @@ export function RichTextEditor({ content, onChange }: RichTextEditorProps) {
     onUpdate: ({ editor }) => {
       onChange(editor.getHTML());
     },
-    // Fix for SSR issue - explicitly set to false to avoid hydration mismatches
     immediatelyRender: false,
   });
 

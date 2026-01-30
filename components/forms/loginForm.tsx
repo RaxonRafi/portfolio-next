@@ -27,8 +27,8 @@ export function LoginForm({
 
   const form = useForm<FieldValues>({
     defaultValues: {
-      email: "admin@gmail.com",
-      password: "hello_world",
+      email: "",
+      password: "",
     },
   });
 
@@ -63,8 +63,8 @@ export function LoginForm({
         {...props}
       >
         <div className="flex flex-col items-center gap-2 text-center">
-          <h1 className="text-2xl font-bold">Login to your account</h1>
-          <p className="text-muted-foreground text-sm text-balance">
+          <h1 className="text-2xl font-bold text-white">Login to your account</h1>
+          <p className="text-white/60 text-sm text-balance">
             Enter your email below to login to your account
           </p>
         </div>
@@ -107,14 +107,14 @@ export function LoginForm({
             )}
           />
 
-          <Button type="submit" className="w-full" disabled={isLoading}>
+          <Button type="submit" className="w-full btn-primary" disabled={isLoading}>
             {isLoading ? "Logging in..." : "Login"}
           </Button>
         </div>
 
-        <div className="text-center text-sm">
+        <div className="text-center text-sm text-white/60">
           Don&apos;t have an account?{" "}
-          <a href="/register" className="underline underline-offset-4">
+          <a href="/register" className="underline underline-offset-4 text-[#8A2BE2] hover:text-[#b24bff]">
             Sign up
           </a>
         </div>

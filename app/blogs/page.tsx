@@ -1,9 +1,12 @@
 "use client";
 
-import { Blog7 } from "@/components/Blog";
-import { Badge } from "@/components/ui/badge";
+import { Blog } from "@/components/Blog";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 📝 BLOG PAGE - NEO-TERMINAL STYLE
+// ═══════════════════════════════════════════════════════════════════════════
 
 interface Author {
   id: number;
@@ -35,6 +38,7 @@ interface TransformedBlogPost {
   published: string;
   url: string;
   image: string;
+  readTime?: string;
 }
 
 export default function BlogPage() {
@@ -50,15 +54,15 @@ export default function BlogPage() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_API}/post`,
-          {
-            next: { revalidate: 60 }, // ISR - revalidate every 60 seconds
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const baseUrl =
+          process.env.NEXT_PUBLIC_BASE_API ||
+          "https://muhammadrafi-portfolio-backend.vercel.app/api/v1";
+        const response = await fetch(`${baseUrl}/post`, {
+          next: { revalidate: 60 },
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -70,10 +74,15 @@ export default function BlogPage() {
           summary:
             blog.content.replace(/<[^>]*>/g, "").substring(0, 150) + "...",
           label: blog.tags[0] || "General",
-          author: blog.author?.name || "Admin",
-          published: new Date(blog.createdAt).toLocaleDateString(),
+          author: blog.author?.name || "Muhammad Rafi",
+          published: new Date(blog.createdAt).toLocaleDateString("en-US", {
+            day: "numeric",
+            month: "short",
+            year: "numeric"
+          }),
           url: `/blogs/${blog.slug}`,
-          image: blog.thumbnail || "/placeholder-image.jpg",
+          image: blog.thumbnail || "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop",
+          readTime: `${Math.ceil(blog.content.replace(/<[^>]*>/g, "").split(" ").length / 200)} min read`,
         }));
 
         setPosts(transformedPosts);
@@ -88,66 +97,92 @@ export default function BlogPage() {
     fetchBlogs();
   }, []);
 
+  // Loading state
   if (loading) {
     return (
-      <section id="about" className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4">
-              Blogs
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Blogs</h2>
-            <div className="w-20 h-1 bg-primary mx-auto"></div>
-            <p className="mt-8 text-muted-foreground">Loading blogs...</p>
+      <section 
+        className="min-h-screen py-32 relative"
+        style={{ backgroundColor: '#121212' }}
+      >
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            className="max-w-3xl mb-16"
+          >
+            <span 
+              className="font-mono text-[0.65rem] uppercase tracking-[0.15em] mb-4 block"
+              style={{ color: '#8A2BE2' }}
+            >
+              07 — Blog
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal mb-6 font-mono text-white">
+              Latest{' '}
+              <span 
+                className="text-transparent bg-clip-text"
+                style={{
+                  backgroundImage: 'linear-gradient(135deg, #8A2BE2 0%, #b24bff 100%)',
+                }}
+              >
+                Articles
+              </span>
+            </h2>
+          </motion.div>
+
+          <div className="flex justify-center items-center py-20">
+            <div 
+              className="w-10 h-10 border-2 border-t-transparent rounded-full animate-spin"
+              style={{ borderColor: '#8A2BE2', borderTopColor: 'transparent' }}
+            />
+            <span className="ml-4 text-white/50 font-mono">Loading blogs...</span>
           </div>
         </div>
       </section>
     );
   }
 
+  // Error state
   if (error) {
     return (
-      <section id="about" className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4">
-              Blogs
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Blogs</h2>
-            <div className="w-20 h-1 bg-primary mx-auto"></div>
-            <p className="mt-8 text-red-500">{error}</p>
+      <section 
+        className="min-h-screen py-32 relative"
+        style={{ backgroundColor: '#121212' }}
+      >
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            className="max-w-3xl mb-16"
+          >
+            <span 
+              className="font-mono text-[0.65rem] uppercase tracking-[0.15em] mb-4 block"
+              style={{ color: '#8A2BE2' }}
+            >
+              07 — Blog
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal mb-6 font-mono text-white">
+              Latest{' '}
+              <span 
+                className="text-transparent bg-clip-text"
+                style={{
+                  backgroundImage: 'linear-gradient(135deg, #8A2BE2 0%, #b24bff 100%)',
+                }}
+              >
+                Articles
+              </span>
+            </h2>
+          </motion.div>
+
+          <div className="neo-card p-8 text-center max-w-xl mx-auto">
+            <p className="text-red-400 font-mono">{error}</p>
           </div>
         </div>
       </section>
     );
   }
 
-  return (
-    <section id="about" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          variants={fadeIn}
-          className="text-center mb-16"
-        >
-          <Badge variant="outline" className="mb-4">
-            Blogs
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Blogs</h2>
-          <div className="w-20 h-1 bg-primary mx-auto"></div>
-        </motion.div>
-        <Blog7
-          tagline="Latest Articles"
-          heading="Our Blog"
-          description="Discover the latest insights, tips, and tutorials in web development. Stay updated with our expert posts and guides."
-          buttonText="View all articles"
-          buttonUrl="/blog"
-          posts={posts}
-        />
-      </div>
-    </section>
-  );
+  // Success state - use Blog component
+  return <Blog posts={posts} />;
 }

@@ -108,7 +108,7 @@ const BlogsTable = ({ className, ...props }: React.ComponentProps<"div">) => {
   if (loading) {
     return (
       <div
-        className={cn("w-full max-w-4xl mx-auto text-center py-10", className)}
+        className={cn("w-full max-w-4xl mx-auto text-center py-10 text-white/80", className)}
       >
         <p>Loading blogs...</p>
       </div>
@@ -119,7 +119,7 @@ const BlogsTable = ({ className, ...props }: React.ComponentProps<"div">) => {
     return (
       <div
         className={cn(
-          "w-full max-w-4xl mx-auto text-center py-10 text-red-500",
+          "w-full max-w-4xl mx-auto text-center py-10 text-red-400",
           className
         )}
       >
@@ -131,9 +131,9 @@ const BlogsTable = ({ className, ...props }: React.ComponentProps<"div">) => {
   // --- Component Render ---
   return (
     <div className={cn("w-full max-w-4xl mx-auto", className)} {...props}>
-      <Card>
+      <Card className="neo-card border-[rgba(138,43,226,0.2)]">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold">Blogs</CardTitle>
+          <CardTitle className="text-2xl font-bold text-white">Blogs</CardTitle>
         </CardHeader>
         <CardContent>
           <Table>
@@ -156,47 +156,48 @@ const BlogsTable = ({ className, ...props }: React.ComponentProps<"div">) => {
             <TableBody>
               {blogsOnCurrentPage.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={8} className="h-24 text-center">
+                  <TableCell colSpan={8} className="h-24 text-center text-white/60">
                     No blogs found.
                   </TableCell>
                 </TableRow>
               ) : (
                 blogsOnCurrentPage.map((blog) => (
                   <TableRow key={blog.id}>
-                    <TableCell className="font-medium max-w-xs truncate">
+                    <TableCell className="font-medium max-w-xs truncate text-white/90">
                       {blog.title}
                     </TableCell>
-                    <TableCell className="max-w-xs truncate">
+                    <TableCell className="max-w-xs truncate text-white/80">
                       {formatTags(blog.tags)}
                     </TableCell>
                     <TableCell>
                       {blog.isFeatured ? (
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[rgba(34,197,94,0.2)] text-emerald-400 border border-emerald-500/30">
                           Yes
                         </span>
                       ) : (
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white/10 text-white/70 border border-white/20">
                           No
                         </span>
                       )}
                     </TableCell>
                     <TableCell>
-                      <div className="flex items-center">
-                        <Eye className="mr-1 h-4 w-4 text-gray-500" />
+                      <div className="flex items-center text-white/80">
+                        <Eye className="mr-1 h-4 w-4 text-white/50" />
                         {blog.views}
                       </div>
                     </TableCell>
                     <TableCell>
-                      <div className="flex items-center">
-                        <User className="mr-1 h-4 w-4 text-gray-500" />
+                      <div className="flex items-center text-white/80">
+                        <User className="mr-1 h-4 w-4 text-white/50" />
                         {blog.author?.name || "Unknown"}
                       </div>
                     </TableCell>
-                    <TableCell>{formatDate(blog.createdAt)}</TableCell>
+                    <TableCell className="text-white/80">{formatDate(blog.createdAt)}</TableCell>
                     <TableCell>
                       <Button
                         variant="outline"
                         size="sm"
+                        className="border-[rgba(138,43,226,0.3)] text-white/90 hover:bg-[rgba(138,43,226,0.15)]"
                         onClick={() => handleDeleteClick(blog)}
                       >
                         <Trash2 className="h-4 w-4" />
@@ -204,7 +205,7 @@ const BlogsTable = ({ className, ...props }: React.ComponentProps<"div">) => {
                     </TableCell>
                     <TableCell className="text-right">
                       <Link href={`/blogs/${blog.slug}`}>
-                        <Button variant="outline" size="sm">
+                        <Button variant="outline" size="sm" className="border-[rgba(138,43,226,0.3)] text-white/90 hover:bg-[rgba(138,43,226,0.15)]">
                           View
                         </Button>
                       </Link>
@@ -231,17 +232,19 @@ const BlogsTable = ({ className, ...props }: React.ComponentProps<"div">) => {
           <Button
             variant="outline"
             size="sm"
+            className="border-[rgba(138,43,226,0.3)] text-white/90 hover:bg-[rgba(138,43,226,0.15)]"
             onClick={goToPrevPage}
             disabled={currentPage === 1}
           >
             <ChevronLeft className="mr-2 h-4 w-4" /> Previous
           </Button>
-          <div className="flex-1 text-sm text-muted-foreground text-center">
+          <div className="flex-1 text-sm text-white/60 text-center">
             Page {currentPage} of {totalPages}
           </div>
           <Button
             variant="outline"
             size="sm"
+            className="border-[rgba(138,43,226,0.3)] text-white/90 hover:bg-[rgba(138,43,226,0.15)]"
             onClick={goToNextPage}
             disabled={currentPage === totalPages}
           >

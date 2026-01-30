@@ -247,8 +247,8 @@ export default function UpdateProjectForm({
 
           {/* Thumbnail */}
           <div className="space-y-3">
-            <FormLabel>Project Thumbnail</FormLabel>
-            <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center">
+            <FormLabel className="text-white/90">Project Thumbnail</FormLabel>
+            <div className="border-2 border-dashed border-[rgba(138,43,226,0.3)] rounded-lg p-4 text-center bg-white/5">
               <input
                 type="file"
                 accept="image/*"
@@ -260,19 +260,19 @@ export default function UpdateProjectForm({
                 {thumbnailPreview ? (
                   <div className="space-y-2">
                     <img src={thumbnailPreview} alt="preview" className="mx-auto max-h-40 rounded-lg" />
-                    <p className="text-sm text-muted-foreground">Click to change image</p>
+                    <p className="text-sm text-white/60">Click to change image</p>
                   </div>
                 ) : (
                   <div className="space-y-2">
-                    <Upload className="mx-auto h-12 w-12 text-gray-400" />
-                    <p className="text-sm text-muted-foreground">Click to upload thumbnail image</p>
+                    <Upload className="mx-auto h-12 w-12 text-white/40" />
+                    <p className="text-sm text-white/60">Click to upload thumbnail image</p>
                   </div>
                 )}
               </label>
             </div>
           </div>
 
-          <Button type="submit" className="w-full" disabled={isLoading}>
+          <Button type="submit" className="w-full btn-primary" disabled={isLoading}>
             {isLoading ? "Updating..." : "Update Project"}
           </Button>
         </form>

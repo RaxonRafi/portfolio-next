@@ -27,14 +27,14 @@ export default function ProjectDetails({ params }: { params: { id: string } }) {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_API}/project/${params.id}`,
-          {
-            next: {
-              revalidate: 120, // Revalidate at most every 2 minutes
-            },
-          }
-        );
+        const baseUrl =
+          process.env.NEXT_PUBLIC_BASE_API ||
+          "https://muhammadrafi-portfolio-backend.vercel.app/api/v1";
+        const res = await fetch(`${baseUrl}/project/${params.id}`, {
+          next: {
+            revalidate: 120, // Revalidate at most every 2 minutes
+          },
+        });
 
         if (!res.ok) {
           if (res.status === 404) {

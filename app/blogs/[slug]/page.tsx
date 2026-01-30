@@ -40,8 +40,11 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     const fetchBlog = async () => {
       try {
         setLoading(true);
+        const baseUrl =
+          process.env.NEXT_PUBLIC_BASE_API ||
+          "https://muhammadrafi-portfolio-backend.vercel.app/api/v1";
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_API}/post/slug/${params.slug}`, // Reverted: Use /post endpoint
+          `${baseUrl}/post/slug/${params.slug}`, // Reverted: Use /post endpoint
           {
             next: { revalidate: 120 }, // ISR - revalidate every 2 minutes
             headers: {

@@ -27,11 +27,13 @@ export default function ProjectsPage() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`, {
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_API;
+        const res = await fetch(`${baseUrl}/project`, {
           next: {
-            revalidate: 60, // Revalidate at most every 60 seconds
+            revalidate: 60, 
           },
         });
+        console.log(res)
 
         if (!res.ok) {
           throw new Error(`Failed to fetch projects: ${res.status}`);
