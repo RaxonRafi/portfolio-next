@@ -194,9 +194,10 @@ function ProjectCard({ project, index }: ProjectCardProps) {
                 />
               </h3>
 
-              <p className="text-white/50 text-sm leading-relaxed mb-4 line-clamp-2">
-                {project.desc}
-              </p>
+              <div
+                className="text-white/50 text-sm leading-relaxed mb-4 line-clamp-2 [&_p]:inline [&_p]:m-0 [&_p]:after:content-['\20'] [&_a]:text-[#8A2BE2] [&_a]:underline [&_strong]:font-semibold"
+                dangerouslySetInnerHTML={{ __html: project.desc }}
+              />
 
               {/* Technologies as skill-tags */}
               <div className="flex flex-wrap gap-2">
