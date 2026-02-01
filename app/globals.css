@@ -552,8 +552,51 @@ body::before {
    Responsive Utilities
 ═══════════════════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
+  :root {
+    --font-size: 14px;
+  }
+
   .section-padding {
     padding-top: 80px;
     padding-bottom: 80px;
+  }
+
+  /* Better mobile neo-card */
+  .neo-card {
+    border-radius: 6px;
+  }
+
+  /* Better mobile neo-button */
+  .neo-button {
+    border-radius: 6px;
+  }
+
+  /* Reduce glow effects on mobile for performance */
+  .glow-text {
+    text-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+  }
+
+  .atmospheric-glow::before {
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  :root {
+    --font-size: 13px;
+  }
+
+  .section-padding {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  /* Optimize glow effects for very small screens */
+  .glow-text {
+    text-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
   }
 }
