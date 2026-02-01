@@ -33,7 +33,7 @@ interface AnimatedSectionProps {
   staggerDelay?: number;
   /** Only animate once */
   once?: boolean;
-  /** Viewport margin for trigger */
+  /** Viewport margin for trigger (e.g., "-100px", "0px 0px -100px 0px") */
   margin?: string;
   /** HTML element to render as */
   as?: 'div' | 'section' | 'article' | 'main' | 'header' | 'footer' | 'aside' | 'nav';
@@ -124,14 +124,14 @@ export function AnimatedSection({
   stagger = false,
   staggerDelay = 0.1,
   once = true,
-  margin = '-100px',
+  margin = '0px 0px -100px 0px',
   as = 'div',
   threshold = 0.1,
 }: AnimatedSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { 
     once, 
-    margin: margin as `-${number}px`,
+    margin: margin as any,
     amount: threshold,
   });
 
