@@ -116,7 +116,7 @@ export default function Hero() {
             View Projects
           </button>
           <a 
-            href="https://drive.google.com/file/d/17XCuJzGaMFim86DKfGu91pEGTBZcWsuo/view?usp=drive_link"
+            href="https://drive.google.com/file/d/1h2XgZjtak8qUymkmVEbc1f117vbIfUcm/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="neo-button px-6 sm:px-8 py-3 sm:py-4 font-mono text-base sm:text-lg w-full sm:w-auto text-center"
