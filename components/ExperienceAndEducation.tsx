@@ -24,6 +24,20 @@ const experiences = [
   },
   {
     id: 2,
+    date: "Jul 2025 – Oct 2025",
+    title: "Full Stack AI Engineer (Contract)",
+    company: "Machine Minds",
+    location: "Remote, Pakistan",
+    points: [
+      "Developed a custom AI real estate agent (Node.js, React.js, MongoDB, OpenAI GPT API) that automated lead engagement, qualification, and conversion for real estate agents.",
+      "Engineered conversational flows handling inbound property inquiries and buyer questions in real time, cutting manual agent response time significantly.",
+      "Implemented lead capture and qualification logic extracting buyer intent, budget, and property preferences into structured MongoDB records.",
+      "Built a React.js agent dashboard for reviewing captured leads, conversation history, and qualification status.",
+      "Delivered instant, context-aware responses to prospects outside business hours, improving client conversion.",
+    ],
+  },
+  {
+    id: 3,
     date: "Apr 2022 – Nov 2023",
     title: "Web Developer (Internship)",
     company: "Oxyjon",
@@ -35,7 +49,7 @@ const experiences = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     date: "May 2023 – Aug 2023",
     title: "Backend Developer (Contract)",
     company: "Global Technologies Solutions Pakal",
